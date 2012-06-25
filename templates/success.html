@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>SeeThisCode - post_success</title>
+		
+		<script type="text/javascript" src="scripts/shCore.js"></script>
+
+		<script type="text/javascript" src="scripts/shBrushCpp.js"></script>
+		<script type="text/javascript" src="scripts/shBrushCSharp.js"></script>
+		<script type="text/javascript" src="scripts/shBrushJava.js"></script>
+		<script type="text/javascript" src="scripts/shBrushJScript.js"></script>
+		<script type="text/javascript" src="scripts/shBrushPython.js"></script>
+		<script type="text/javascript" src="scripts/shBrushRuby.js"></script>
+		<script type="text/javascript" src="scripts/shBrushScala.js"></script>
+		<script type="text/javascript" src="scripts/shBrushSql.js"></script>
+		<script type="text/javascript" src="scripts/shBrushAppleScript.js"></script>
+
+		<link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/>
+		<link type="text/css" rel="stylesheet" href="styles/shThemeDefault.css"/>
+		<script type="text/javascript">SyntaxHighlighter.all();</script>
+	</head>
+
+	<style>
+		body {
+		    position: relative;
+		    font-family: Helvetica;
+		    font-size: 14px;
+		    margin: 20px;
+		    padding: 10px;
+		    color: #333;
+		}
+		.main-title {
+			display: block;
+		    color: #228B22;
+		    font-family: Courier, Monospace;
+		    font-size: 50px;
+		    font-weight: bold;
+		    text-align: center;
+		    margin-bottom: 0px;
+		    text-decoration: none;
+		}
+		.sub-title {
+			display: block;
+			color: #228B22;
+		    font-family: Monospace;
+		    font-size: 20px;
+		    text-align: center;
+		    margin-bottom: 30px;
+		    text-decoration: none;
+		}
+		.post-title {
+		    font-size: 24px;
+		    font-weight: bold;
+		    text-decoration: none;
+		    color: #333;
+		}
+		.timestr {
+		    position: absolute;
+		    right: 0px;
+		    bottom: 0px;
+		    color: #999;
+		}
+		.forkme {
+			position: absolute;
+			top: 0;
+			right: 0;
+			border: 0;
+		}
+	</style>
+
+	<body>
+		<a href="http://github.com/tejasbubane/seethiscode"><img class="forkme" src="https://a248.e.akamai.net/camo.github.com/abad93f42020b733148435e2cd92ce15c542d320/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub"></a>
+		<a href="/" class="main-title"> SeeThisCode </a>
+		<a href="/" class="sub-title"> because talk is cheap when it comes to coding </a>
+		<div>
+			<a href="/{{post.key().id()}}" class="post-title">{{post.name}}</a>
+			<hr>
+			<div>
+				<pre class="brush: {{post.lang}};"> {{post.content}} </pre>
+			</div>
+		</div>
+		    <a href="https://twitter.com/share" class="twitter-share-button" data-text="{{post.name}} #SeeThisCode" data-related="tejas_bubane: Creator of SeeThisCode" data-lang="en" data-count="none">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	</body>
+
+</html>

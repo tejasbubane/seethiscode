@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+
+<html>
+
+	<head>
+		<title>SeeThisCode</title>
+	</head>
+
+	<style>
+		body {
+		    position: relative;
+		    font-family: Helvetica, Arial, sans-serif;
+		    font-size: 14px;
+		    margin: 20;
+		    padding: 10px;
+		    color: #333;
+		}
+		.main-title {
+			display: block;
+		    color: #228B22;
+		    font-family: Courier, Monospace;
+		    font-size: 50px;
+		    font-weight: bold;
+		    text-align: center;
+		    margin-bottom: 0px;
+		    text-decoration: none;
+		}
+		.sub-title {
+			display: block;
+			color: #228B22;
+		    font-family: Courier, Monospace;
+		    font-size: 20px;
+		    font-weight: bold;
+		    text-align: center;
+		    margin-bottom: 30px;
+		    text-decoration: none;
+		}
+		.forkme {
+			position: absolute;
+			top: 0;
+			right: 0;
+			border: 0;
+		}
+		.post_link {
+			font-size: 20px;
+			color: #4d90fe;
+			text-align: center;
+		}
+		h2 {
+			text-align: center;
+		}
+		.recents {
+			font-size: 14px;
+			background-color: #eee;
+			text-align: center;
+			text-decoration: bold;
+		}
+	</style>
+
+	<body>
+		<a href="http://github.com/tejasbubane/seethiscode"><img class="forkme" src="https://a248.e.akamai.net/camo.github.com/abad93f42020b733148435e2cd92ce15c542d320/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub"></a>
+		<a href="/" class="main-title"> SeeThisCode </a>
+		<a href="/" class="sub-title"> because talk is cheap when it comes to coding </a>
+		<div class="post_link"> <a href="/newpost"> post my Code </a> </div>
+		<br><br>
+		<hr>
+		<br>
+		<h2> Recent Submissions </h2>
+		<div>
+			{% for post in posts %}
+				<div class="recents"> <a href="/{{post.key().id()}}">{{post.name}}</a> </div> <br>
+			{% endfor %}
+		</div>
+	</body>
+
+</html>
