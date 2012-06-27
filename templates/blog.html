@@ -68,7 +68,7 @@
 		<h2> Recent Submissions </h2>
 		<div>
 			{% for post in posts %}
-				<div class="recents"> <a href="/{{post.key().id()}}">{{post.name}}</a> </div> <br>
+				<div class="recents"> <a href="/{{post.key().id()}}">{{post.name}} ({{post.lang}})</a> </div> <br>
 			{% endfor %}
 		</div>
 	</body>
