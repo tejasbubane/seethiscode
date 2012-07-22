@@ -23,6 +23,8 @@
 
 import os
 import webapp2
+import captcha
+from os import environ
 
 import jinja2 #reference: http://jinja.pocoo.org/docs/
 
@@ -48,9 +50,15 @@ class Post(db.Model):
 	lang = db.StringProperty()
 	name = db.StringProperty()
 
+chtml = captcha.displayhtml(
+    public_key = "6Lf4R9QSAAAAAJ5HtpuRxDFBbEIyENx8RYvJLwJO",
+    use_ssl = False,
+    error = None)
+
 class NewPost(Handler):
 	def render_newpost(self, name="", content="", error=""):
-		self.render("newpost.html", name=name, content=content, error=error)
+                global chtml
+                self.render("newpost.html", name=name, content=content, error=error, chtml=chtml)
 
 	def get(self):
 		self.render_newpost()
@@ -59,16 +67,29 @@ class NewPost(Handler):
 		name = self.request.get("name")
 		content = self.request.get("content")
 		lang = self.request.get("lang")
-		if content:
-			if not name:
-				name = "Untitled"
-			p = Post(name=name, content=content, lang=lang)
-			p.put()
-			KEY = p.key().id()
-			self.redirect("/"+str(KEY), str(KEY))
-		else:
-			error = "content, please!"
-			self.render_newpost(name, content, error)
+                challenge = self.request.get('recaptcha_challenge_field')
+                response = self.request.get('recaptcha_response_field')
+                remoteip = environ['REMOTE_ADDR']
+
+                cResponse = captcha.submit(
+                        challenge,
+                        response,
+                        "6Lf4R9QSAAAAAAibMAmiP28JCkO_E5NdF9QgjkMY",
+                        remoteip
+                )
+                if cResponse.is_valid:
+                        if content:
+                                if not name:
+                                        name = "Untitled"
+                                p = Post(name=name, content=content, lang=lang)
+                                p.put()
+                                KEY = p.key().id()
+                                self.redirect("/"+str(KEY), str(KEY))
+                        else:
+                                error = "content, please!"
+                else:
+                        error = "captcha invalid. try again"
+                        self.render_newpost(name, content, error)
 
 class SpecificPost(Handler):
 	def get(self, key):
